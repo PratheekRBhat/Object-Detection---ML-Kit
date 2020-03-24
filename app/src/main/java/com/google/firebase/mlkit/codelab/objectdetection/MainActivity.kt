@@ -78,14 +78,16 @@ class MainActivity : AppCompatActivity(),
     /**
      * MLKit Object Detection Function
      */
-    val image = FirebaseVisionImage.fromBitmap(bitmap)
-    val options = FirebaseVisionObjectDetectorOptions.Builder()
-        .setDetectorMode(FirebaseVisionObjectDetectorOptions.SINGLE_IMAGE_MODE)
-        .enableMultipleObjects()
-        .enableClassification()
-        .build()
-    val detector = FirebaseVision.getInstance().getOnDeviceObjectDetector(options)
-    private fun runObjectDetection(bitmap: Bitmap) {
+        private fun runObjectDetection(bitmap: Bitmap) {
+        val image = FirebaseVisionImage.fromBitmap(bitmap)
+
+        val options = FirebaseVisionObjectDetectorOptions.Builder()
+            .setDetectorMode(FirebaseVisionObjectDetectorOptions.SINGLE_IMAGE_MODE)
+            .enableMultipleObjects()
+            .enableClassification()
+            .build()
+        val detector = FirebaseVision.getInstance().getOnDeviceObjectDetector(options)
+
         detector.processImage(image)
             .addOnSuccessListener {
                 debugPrint(it)
