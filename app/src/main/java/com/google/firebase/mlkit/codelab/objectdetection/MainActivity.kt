@@ -88,6 +88,8 @@ class MainActivity : AppCompatActivity(),
             .enableMultipleObjects()
             .enableClassification()
             .build()
+
+
         val detector = FirebaseVision.getInstance().getOnDeviceObjectDetector(options)
 
         detector.processImage(image)
